@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import { Head } from '@inertiajs/vue3';
+import {Head, Link} from '@inertiajs/vue3';
 import Heading from '@/components/Heading.vue';
 import { dashboard } from '@/routes';
+import {Button} from "@/components/ui/button";
+import {create} from "@/routes/budgets";
 
 defineOptions({
     layout: {
@@ -26,6 +28,8 @@ defineOptions({
             description="Create and manage your monthly budgets"
         />
 
-        <!-- Your budgets content will go here -->
+        <Button as-child>
+            <Link :href="create()">New Budget</Link>
+        </Button>
     </div>
 </template>
