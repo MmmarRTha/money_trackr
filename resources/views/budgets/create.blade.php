@@ -7,8 +7,8 @@
 @section('actions')
     <div class="sm:flex sm:items-center mt-10">
         <div class="sm:flex-auto">
-            <h1 class="font-bold text-4xl">Crear Presupuesto</h1>
-            <p class="mt-2 text-xl text-gray-500">Crear un Presupuesto es sencillo: añade un nombre y cantidad.</p>
+            <h1 class="font-bold text-3xl">New Budget</h1>
+            <p class="mt-2 text-xl text-gray-500">Creating a budget is easy: add a name and an amount.</p>
         </div>
         <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
             <a href="{{ route('dashboard') }}"
@@ -18,12 +18,10 @@
 @endsection
 
 @section('dashboard-contents')
-    <form method="POST" action="{{ route('budgets.store') }}" class="mt-14 space-y-3 max-w-2xl mx-auto" novalidate>
+    <form method="POST" action="{{ route('budgets.store') }}" class="" novalidate>
         @csrf
-
         <x-budget-form />
-
-        <input type="submit" value='Crear Presupuesto'
-               class="bg-purple-950 hover:bg-purple-800 w-full p-3 rounded-lg text-white font-bold  text-xl cursor-pointer" />
+        <input type="submit" value='Create Budget'
+               class="bg-blue-500 hover:bg-blue-600 w-full md:w-80 p-3 rounded-lg text-white font-bold  text-xl cursor-pointer mt-4" />
     </form>
 @endsection

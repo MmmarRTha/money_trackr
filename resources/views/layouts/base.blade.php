@@ -19,9 +19,9 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
 </head>
 
-<body>
+<body class="bg-black">
 @if(session('success'))
-    <div class="max-w-5xl mx-auto">
+    <div class="max-w-2xl mx-auto pt-5">
         <x-alert :message="session('success')" />
     </div>
 @endif

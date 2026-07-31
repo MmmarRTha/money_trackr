@@ -1,10 +1,10 @@
 <div class="flex flex-col gap-2">
-    <label class="font-bold text-2xl" for="name">Nombre</label>
+    <label class="font-semibold text-2xl text-white" for="name">Name</label>
 
     <input
         id="name"
         type="text"
-        placeholder="Nombre del Presupuesto. Ej. Boda, Casa, Graduación, Semana"
+        placeholder="Budget name. E.g. Wedding, House, Graduation, Weekly Budget"
         class="w-full border border-gray-300 p-3 rounded-lg"
         name="name"
     >
@@ -14,14 +14,14 @@
 
 
 <div class="flex flex-col gap-2">
-    <label class="font-bold text-2xl" for="amount">Cantidad</label>
+    <label class="font-semibold text-2xl text-white" for="amount">Amount</label>
 
     <input
         id="amount"
         type="number"
         min="0"
         step="1"
-        placeholder="Cantidad de Presupuesto"
+        placeholder="Budget amount"
         class="w-full border border-gray-300 p-3 rounded-lg"
         name="amount"
     />
@@ -30,10 +30,10 @@
 
 <div class="flex flex-col gap-2">
     <div class="flex gap-2 items-center">
-        <label class="font-bold text-2xl" for="amount">Tipo de Presupuesto</label>
+        <label class="font-semibold text-2xl text-white" for="amount">Budget Type</label>
         <div class="relative inline-block group">
             <button
-                class="w-5 h-5 flex items-center justify-center rounded-full bg-gray-900 text-white text-sm font-bold">
+                class="w-5 h-5 flex items-center justify-center rounded-full bg-gray-500 text-white text-sm font-semibold">
                 i
             </button>
             <div
@@ -43,17 +43,17 @@
                 group-hover:opacity-100 group-hover:visible
                 group-focus-within:opacity-100 group-focus-within:visible
                 transition-all duration-200 space-y-3">
-                <p><span class="font-bold">Presupuesto General</span> te permite almacenar gastos con categorías, ideal para presupuestos semanales o mensuales.</p>
-                <p><span class="font-bold">Proyecto</span> te permite almacenar gastos relacionados como una graduación, boda o remodelación.</p>
+                <p><span class="font-semibold">General Budget</span> lets you track expenses with categories, making it ideal for weekly or monthly budgets.</p>
+                <p><span class="font-semibold">Proyect</span> lets you track expenses related to a specific goal, such as a graduation, wedding, or home renovation.</p>
             </div>
         </div>
     </div>
 
 
     <select name="type" class="w-full border border-gray-300 p-3 rounded-lg">
-        <option value="">Tipo de Presupuesto</option>
-        <option value="general">General - Con Categorías</option>
-        <option value="goal">Proyecto</option>
+        <option value="">Select Budget Type</option>
+        <option value="general">General - With Categories</option>
+        <option value="goal">Proyect</option>
     </select>
 
     <x-input-error field="type" />
