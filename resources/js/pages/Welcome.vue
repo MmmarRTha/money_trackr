@@ -7,9 +7,9 @@ import {
     ReceiptText,
     TrendingDown,
     TrendingUp,
-    Wallet,
 } from '@lucide/vue';
 import AppFooter from '@/components/AppFooter.vue';
+import AppLogo from '@/components/AppLogo.vue';
 import { dashboard, login } from '@/routes';
 import { register } from '@/routes';
 
@@ -47,16 +47,7 @@ const bars = [40, 55, 35, 70, 50, 85, 60, 45, 75, 55, 90, 65];
             <nav
                 class="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-6 py-4"
             >
-                <div class="flex items-center gap-2.5">
-                    <span
-                        class="flex h-9 w-9 items-center justify-center rounded-xl bg-fuchsia-600 text-white shadow-sm"
-                    >
-                        <Wallet class="h-4.5 w-4.5" />
-                    </span>
-                    <span class="text-sm font-semibold tracking-tight"
-                        >MoneyTrackr</span
-                    >
-                </div>
+                <AppLogo />
                 <div class="flex items-center gap-2">
                     <Link
                         v-if="$page.props.auth.user"

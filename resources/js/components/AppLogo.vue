@@ -1,11 +1,14 @@
 <script setup lang="ts">
-import AppLogoIcon from '@/components/AppLogoIcon.vue';
+import { Wallet } from '@lucide/vue';
 </script>
 
 <template>
-    <div class="ml-1 grid flex-1 text-left text-sm">
-        <span class="mb-0.5 truncate leading-tight font-semibold"
-            >MoneyTrakr</span
+    <div class="flex items-center gap-2.5">
+        <span
+            class="flex h-9 w-9 items-center justify-center rounded-xl bg-fuchsia-600 text-white shadow-sm"
         >
+            <Wallet class="h-4.5 w-4.5" />
+        </span>
+        <span class="text-sm font-semibold tracking-tight">MoneyTrackr</span>
     </div>
 </template>
