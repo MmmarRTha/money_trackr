@@ -8,11 +8,13 @@
     <div class="sm:flex sm:items-center mt-10">
         <div class="sm:flex-auto">
             <h1 class="font-bold text-3xl">Budgets</h1>
-            <p class="mt-2 text-xl text-gray-500">All your budgets in one place.</p>
+            <p class="mt-2 text-xl text-gray-200">All your budgets in one place.</p>
         </div>
         <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-            <a href="{{ route('budgets.create') }}"
-               class="block w-full cursor-pointer rounded-lg bg-fuchsia-600 px-5 py-3 text-center text-xl font-bold text-white transition hover:bg-fuchsia-700">New Budget</a>
+            <a href="{{ route('dashboard') }}"
+               class="rounded-xl border border-neutral-600 bg-neutral-800 px-5 py-2 text-base font-bold text-white transition hover:bg-neutral-700">
+                ← Return to Dashboard
+            </a>
         </div>
     </div>
 @endsection
@@ -36,7 +38,7 @@
                 <p class="text-xl text-neutral-300">No budgets yet.</p>
                 <p class="mt-2 text-neutral-500">Create your first budget to start tracking your expenses.</p>
                 <a href="{{ route('budgets.create') }}"
-                   class="mt-6 inline-block cursor-pointer rounded-lg bg-fuchsia-600 px-5 py-3 text-center text-lg font-bold text-white transition hover:bg-fuchsia-700">New Budget</a>
+                   class="mt-6 inline-block cursor-pointer rounded-xl bg-fuchsia-600 px-5 py-2 text-center text-base font-bold text-white transition hover:bg-fuchsia-700">New Budget</a>
             </div>
         @endforelse
     </div>
