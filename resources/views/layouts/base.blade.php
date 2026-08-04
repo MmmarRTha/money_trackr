@@ -7,16 +7,7 @@
     <title>{{ config('app.name', 'MoneyTrackr') }} - @yield("title")</title>
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    @fonts
-
-    <!-- Styles / Scripts -->
-    @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
-        @vite(['resources/css/app.css'])
-    @endif
-
-    <!-- Tailwind elements is required -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
+    @vite(['resources/css/app.css'])
 </head>
 
 <body class="min-h-screen bg-neutral-950 text-neutral-100">
