@@ -11,8 +11,8 @@
             <p class="mt-2 text-xl text-gray-500">Creating a budget is easy: add a name and an amount.</p>
         </div>
         <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-            <a href="{{ route('dashboard') }}"
-               class="block w-full cursor-pointer rounded-lg bg-fuchsia-600 px-5 py-3 text-center text-xl font-bold text-white transition hover:bg-fuchsia-700">Return to Dashboard</a>
+            <a href="{{ route('budgets.index') }}"
+               class="block w-full cursor-pointer rounded-lg bg-fuchsia-600 px-5 py-3 text-center text-xl font-bold text-white transition hover:bg-fuchsia-700">Return to Budgets</a>
         </div>
     </div>
 @endsection

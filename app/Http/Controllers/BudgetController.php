@@ -3,22 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\Budget;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class BudgetController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): View
     {
-        //
+        return view('budgets.index', ['budgets' => Budget::all()]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): View
     {
         return view('budgets.create');
     }
@@ -26,7 +28,7 @@ class BudgetController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         //
     }
@@ -34,7 +36,7 @@ class BudgetController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Budget $budget)
+    public function show(Budget $budget): View
     {
         //
     }
@@ -42,7 +44,7 @@ class BudgetController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Budget $budget)
+    public function edit(Budget $budget): View
     {
         //
     }
@@ -50,7 +52,7 @@ class BudgetController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Budget $budget)
+    public function update(Request $request, Budget $budget): RedirectResponse
     {
         //
     }
@@ -58,7 +60,7 @@ class BudgetController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Budget $budget)
+    public function destroy(Budget $budget): RedirectResponse
     {
         //
     }
