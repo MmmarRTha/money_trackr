@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Crear Presupuesto
+    Create Budgets
 @endsection
 
 @section('actions')
@@ -12,7 +12,7 @@
         </div>
         <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
             <a href="{{ route('dashboard') }}"
-               class="block bg-amber-500 text-white w-full px-5 py-3 rounded-lg  font-bold  text-xl cursor-pointer text-center">Volver a Presupuestos</a>
+               class="block w-full cursor-pointer rounded-lg bg-fuchsia-600 px-5 py-3 text-center text-xl font-bold text-white transition hover:bg-fuchsia-700">Return to Dashboard</a>
         </div>
     </div>
 @endsection
@@ -22,6 +22,6 @@
         @csrf
         <x-budget-form />
         <input type="submit" value='Create Budget'
-               class="bg-blue-500 hover:bg-blue-600 w-full md:w-80 p-3 rounded-lg text-white font-bold  text-xl cursor-pointer mt-4" />
+               class="w-full md:w-80 p-3 rounded-lg bg-fuchsia-600 hover:bg-fuchsia-700 text-white font-bold text-xl cursor-pointer mt-4 transition" />
     </form>
 @endsection
