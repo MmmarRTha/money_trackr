@@ -1,6 +1,6 @@
 <div class="space-y-6">
-    <div class="flex flex-col gap-2">
-        <label class="text-sm font-semibold text-neutral-200" for="name">Name</label>
+    <div class="flex flex-col gap-3">
+        <label class="text-base font-semibold text-neutral-200" for="name">Name</label>
 
         <input
             id="name"

@@ -27,7 +27,7 @@ defineOptions({
             title="Manage your budgets"
             description="Create and manage your monthly budgets"
         />
-        <Button as-child size="lg" class="md:w-80 md:mx-auto">
+        <Button as-child size="lg" class="md:w-80 md:mx-auto bg-fuchsia-600 hover:bg-fuchsia-700 text-white text-lg font-medium">
             <a href="/budgets/create">New Budget</a>
         </Button>
     </div>
