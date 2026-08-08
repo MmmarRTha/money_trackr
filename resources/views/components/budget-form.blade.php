@@ -8,7 +8,7 @@
             placeholder="Budget name. E.g. Wedding, House, Graduation, Weekly Budget"
             class="w-full rounded-lg border border-neutral-700 bg-neutral-900 p-3 text-neutral-100 transition placeholder:text-neutral-500 focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/30 focus:outline-none"
             name="name"
-        >
+        />
 
         <x-input-error field="name" />
     </div>
@@ -39,11 +39,15 @@
                 >
                     i
                 </button>
-                <div
-                    class="invisible absolute bottom-full left-1/2 mb-2 w-52 -translate-x-1/2 space-y-3 rounded-lg bg-neutral-800 px-3 py-2 text-xs text-neutral-200 opacity-0 shadow-lg transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100"
-                >
-                    <p><span class="font-semibold">General Budget</span> lets you track expenses with categories, making it ideal for weekly or monthly budgets.</p>
-                    <p><span class="font-semibold">Proyect</span> lets you track expenses related to a specific goal, such as a graduation, wedding, or home renovation.</p>
+                <div class="invisible absolute bottom-full left-1/2 mb-2 w-52 -translate-x-1/2 space-y-3 rounded-lg bg-neutral-800 px-3 py-2 text-xs text-neutral-200 opacity-0 shadow-lg transition-all duration-200 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+                    <p>
+                        <span class="font-semibold">General Budget</span> lets you track expenses with categories,
+                        making it ideal for weekly or monthly budgets.
+                    </p>
+                    <p>
+                        <span class="font-semibold">Proyect</span> lets you track expenses related to a specific goal,
+                        such as a graduation, wedding, or home renovation.
+                    </p>
                 </div>
             </div>
         </div>
