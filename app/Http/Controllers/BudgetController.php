@@ -6,6 +6,7 @@ use App\Http\Requests\BudgetRequest;
 use App\Models\Budget;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class BudgetController extends Controller
@@ -31,8 +32,9 @@ class BudgetController extends Controller
      */
     public function store(BudgetRequest $request): RedirectResponse
     {
-        $data = $request->validated();
-        dd($data);
+        Auth::user()->budgets()->create($request->validated());
+
+        return redirect(route('budgets.index'));
     }
 
     /**

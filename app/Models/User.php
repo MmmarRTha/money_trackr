@@ -49,6 +49,7 @@ class User extends Authenticatable implements PasskeyUser
         ];
     }
 
+    /** @return HasMany<Budget, $this> */
     public function budgets(): HasMany
     {
         return $this->hasMany(Budget::class);
