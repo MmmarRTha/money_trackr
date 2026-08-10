@@ -24,12 +24,17 @@
 @section('dashboard-contents')
     <div class="space-y-6">
         @forelse ($budgets as $budget)
-            <div class="flex items-center justify-between rounded-lg border border-neutral-700 bg-neutral-900 p-5 transition hover:border-neutral-600">
+            <div class="flex items-center justify-between rounded-lg border border-neutral-700 bg-neutral-900 p-3 transition hover:border-neutral-600">
                 <div class="flex flex-col gap-1">
-                    <span class="text-xl font-semibold text-neutral-100">{{ $budget->name }}</span>
-                    <span class="text-xs rounded-br-2xl font-bold{{ $budget->isGoal() ? 'bg-fuchsia-800 text-fuchsia-200' : 'bg-pink-300 text-pink-600' }}">
+                    <p
+                        class="text-xs rounded-br-2xl font-semibold px-3 py-0.5 ring-1 ring-inset mb-2 {{
+                            $budget->isGeneral() ? ' bg-fuchsia-500/15 text-fuchsia-300  ring-fuchsia-500/20'
+                            : 'bg-sky-500/15 text-sky-300 ring-sky-500/20'
+                        }}"
+                    >
                         {{ $budget->isGoal() ? 'Project' : 'General' }}
-                    </span>
+                    </p>
+                    <p class="text-xl font-semibold text-neutral-100">{{ $budget->name }}</p>
                 </div>
                 <div class="text-2xl font-bold text-fuchsia-500">${{ number_format($budget->amount, 2) }}</div>
             </div>
