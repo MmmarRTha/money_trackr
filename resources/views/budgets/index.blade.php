@@ -27,8 +27,8 @@
             <div class="flex items-center justify-between rounded-lg border border-neutral-700 bg-neutral-900 p-5 transition hover:border-neutral-600">
                 <div class="flex flex-col gap-1">
                     <span class="text-xl font-semibold text-neutral-100">{{ $budget->name }}</span>
-                    <span class="text-sm text-neutral-400">
-                        {{ $budget->type === 'goal' ? 'Proyect' : 'General - With Categories' }}
+                    <span class="text-xs rounded-br-2xl font-bold{{ $budget->isGoal() ? 'bg-fuchsia-800 text-fuchsia-200' : 'bg-pink-300 text-pink-600' }}">
+                        {{ $budget->isGoal() ? 'Project' : 'General' }}
                     </span>
                 </div>
                 <div class="text-2xl font-bold text-fuchsia-500">${{ number_format($budget->amount, 2) }}</div>
