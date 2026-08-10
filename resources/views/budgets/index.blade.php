@@ -36,7 +36,13 @@
                     </p>
                     <p class="text-xl font-semibold text-neutral-100">{{ $budget->name }}</p>
                 </div>
-                <div class="text-2xl font-bold text-fuchsia-500">${{ number_format($budget->amount, 2) }}</div>
+
+                <div class="flex justify-end">
+                    <div class="text-2xl font-bold text-fuchsia-500 pr-10">
+                        ${{ number_format($budget->amount, 2) }}
+                    </div>
+                    <x-budget-dropdown :budget="$budget" />
+                </div>
             </div>
         @empty
             <div class="rounded-lg border border-neutral-700 bg-neutral-900 p-10 text-center">
