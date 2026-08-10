@@ -8,6 +8,7 @@
             placeholder="Budget name. E.g. Wedding, House, Graduation, Weekly Budget"
             class="w-full rounded-lg border border-neutral-700 bg-neutral-900 p-3 text-neutral-100 transition placeholder:text-neutral-500 focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/30 focus:outline-none"
             name="name"
+            value="{{ old('name', $budget?->name) }}"
         />
 
         <x-input-error field="name" />
@@ -24,6 +25,7 @@
             placeholder="Budget amount"
             class="w-full rounded-lg border border-neutral-700 bg-neutral-900 p-3 text-neutral-100 transition placeholder:text-neutral-500 focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/30 focus:outline-none"
             name="amount"
+            value="{{ old('amount', $budget?->amount) }}"
         />
         <x-input-error field="amount" />
     </div>
@@ -45,21 +47,27 @@
                         making it ideal for weekly or monthly budgets.
                     </p>
                     <p>
-                        <span class="font-semibold">Proyect</span> lets you track expenses related to a specific goal,
+                        <span class="font-semibold">Project</span> lets you track expenses related to a specific goal,
                         such as a graduation, wedding, or home renovation.
                     </p>
                 </div>
             </div>
         </div>
 
+        @php
+            $selectedType = old('type', $budget->type?->value);
+        @endphp
+
         <select
             id="type"
             name="type"
             class="w-full rounded-lg border border-neutral-700 bg-neutral-900 p-3 text-neutral-100 transition focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/30 focus:outline-none"
         >
-            <option value="" class="bg-neutral-900">Select Budget Type</option>
-            <option value="general" class="bg-neutral-900">General - With Categories</option>
-            <option value="goal" class="bg-neutral-900">Proyect</option>
+            <option value="" @selected($selectedType === '')>Select Budget Type</option>
+            <option value="general" @selected($selectedType === 'general') class="bg-neutral-900">
+                General - With Categories
+            </option>
+            <option value="goal" @selected($selectedType === 'goal') class="bg-neutral-900">Project</option>
         </select>
 
         <x-input-error field="type" />

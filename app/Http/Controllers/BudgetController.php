@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\BudgetRequest;
 use App\Models\Budget;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +17,11 @@ class BudgetController extends Controller
      */
     public function index(): View
     {
-        return view('budgets.index', ['budgets' => Budget::all()]);
+        /** @var User $user */
+        $user = Auth::user();
+        $budgets = $user->budgets()->get();
+
+        return view('budgets.index', ['budgets' => $budgets]);
     }
 
     /**
