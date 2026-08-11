@@ -19,7 +19,6 @@
             <x-alert :message="session('success')" />
         </div>
     @endif
-
     @yield('contents')
 </body>
 </html>
