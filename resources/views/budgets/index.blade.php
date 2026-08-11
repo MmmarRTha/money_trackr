@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="flex justify-end">
-                    <div class="text-2xl font-bold text-fuchsia-500 pr-10">
+                    <div class="pr-10 text-2xl font-bold text-fuchsia-500">
                         ${{ number_format($budget->amount, 2) }}
                     </div>
                     <x-budget-dropdown :budget="$budget" />

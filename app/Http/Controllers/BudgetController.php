@@ -55,7 +55,7 @@ class BudgetController extends Controller
      */
     public function edit(Budget $budget): View
     {
-        //
+        return view('budgets.edit', ['budget' => $budget]);
     }
 
     /**
