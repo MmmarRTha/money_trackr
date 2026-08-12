@@ -6,7 +6,7 @@ use App\Http\Requests\BudgetRequest;
 use App\Models\Budget;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use Illuminate\Routing\Attributes\Controllers\Authorize;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
@@ -39,7 +39,7 @@ class BudgetController extends Controller
     {
         Auth::user()->budgets()->create($request->validated());
 
-        return redirect(route('budgets.index'));
+        return redirect(route('budgets.index'))->with('success', 'Budget created.');
     }
 
     /**
@@ -53,6 +53,7 @@ class BudgetController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
+    #[Authorize('update', 'budget')]
     public function edit(Budget $budget): View
     {
         return view('budgets.edit', ['budget' => $budget]);
@@ -61,9 +62,12 @@ class BudgetController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Budget $budget): RedirectResponse
+    #[Authorize('update', 'budget')]
+    public function update(BudgetRequest $request, Budget $budget): RedirectResponse
     {
-        //
+        $budget->update($request->validated());
+
+        return redirect()->route('budgets.index')->with('success', 'Budget updated!');
     }
 
     /**
