@@ -73,8 +73,11 @@ class BudgetController extends Controller
     /**
      * Remove the specified resource from storage.
      */
+    #[Authorize('delete', 'budget')]
     public function destroy(Budget $budget): RedirectResponse
     {
-        //
+        $budget->delete();
+
+        return redirect()->route('budgets.index')->with('success', 'Budget deleted!');
     }
 }

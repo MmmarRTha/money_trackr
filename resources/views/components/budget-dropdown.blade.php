@@ -67,36 +67,33 @@
         <div class="my-1.5 border-t border-neutral-800"></div>
 
         {{-- Delete --}}
-        <form method="POST" action="">
-            @csrf
-            @method('DELETE')
+        <button
+            type="button"
+            command="show-modal"
+            commandfor="delete-dialog-{{ $budget->id }}"
+            class="group/item flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm text-red-400 transition hover:bg-red-500/10 hover:text-red-300 focus:bg-red-500/10 focus:outline-none"
+        >
+            <span class="flex size-8 shrink-0 items-center justify-center rounded-lg bg-red-500/10 text-red-400 transition group-hover/item:bg-red-500/20">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="size-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 6h18" />
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M8 6V4.5A1.5 1.5 0 0 1 9.5 3h5A1.5 1.5 0 0 1 16 4.5V6"
+                    />
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="m19 6-.75 13.5a1.5 1.5 0 0 1-1.5 1.5h-9.5a1.5 1.5 0 0 1-1.5-1.5L5 6"
+                    />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 10.5v6M14 10.5v6" />
+                </svg>
+            </span>
 
-            <button
-                type="submit"
-                class="group/item flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm text-red-400 transition hover:bg-red-500/10 hover:text-red-300 focus:bg-red-500/10 focus:outline-none"
-            >
-                <span class="flex size-8 shrink-0 items-center justify-center rounded-lg bg-red-500/10 text-red-400 transition group-hover/item:bg-red-500/20">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="size-4">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 6h18" />
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M8 6V4.5A1.5 1.5 0 0 1 9.5 3h5A1.5 1.5 0 0 1 16 4.5V6"
-                        />
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="m19 6-.75 13.5a1.5 1.5 0 0 1-1.5 1.5h-9.5a1.5 1.5 0 0 1-1.5-1.5L5 6"
-                        />
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 10.5v6M14 10.5v6" />
-                    </svg>
-                </span>
-
-                <span>
-                    <span class="block font-medium">Delete Budget</span>
-                    <span class="mt-0.5 block text-xs text-red-400/60"> Permanently remove budget </span>
-                </span>
-            </button>
-        </form>
+            <span>
+                <span class="block font-medium">Delete Budget</span>
+                <span class="mt-0.5 block text-xs text-red-400/60"> Permanently remove budget </span>
+            </span>
+        </button>
     </div>
 </details>
