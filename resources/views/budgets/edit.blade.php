@@ -7,7 +7,7 @@
 @section('actions')
     <div class="mt-10 sm:flex sm:items-center">
         <div class="sm:flex-auto">
-            <h1 class="text-4xl font-bold">Update Budget:</h1>
+            <h1 class="text-3xl font-bold">Update Budget: <span class="text-fuchsia-300">{{ $budget->name }}</span></h1>
             <p class="mt-2 text-xl text-gray-500">Make adjustments to your budget</p>
         </div>
         <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
@@ -20,8 +20,14 @@
 @endsection
 
 @section('dashboard-contents')
-    <form method="POST" action="" class="mx-auto mt-14 max-w-2xl space-y-3" novalidate>
+    <form
+        method="POST"
+        action="{{ route('budgets.update', $budget) }}"
+        class="mx-auto mt-14 max-w-2xl space-y-3"
+        novalidate
+    >
         @csrf
+        @method('PUT')
         <x-budget-form :budget="$budget" />
         <input
             type="submit"

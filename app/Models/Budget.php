@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Budget extends Model
 {
     protected $casts = [
+        'user_id' => 'integer',
         'type' => BudgetType::class,
     ];
 
