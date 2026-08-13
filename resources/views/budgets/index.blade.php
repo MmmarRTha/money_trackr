@@ -42,6 +42,12 @@
                         ${{ number_format($budget->amount, 2) }}
                     </div>
                     <x-budget-dropdown :budget="$budget" />
+                    <x-confirm-delete
+                        :id="'delete-dialog-'.$budget->id"
+                        :title="'Delete Budget: '.$budget->name"
+                        message="This action cannot be undone!"
+                        :action="route('budgets.destroy', $budget)"
+                    />
                 </div>
             </div>
         @empty
