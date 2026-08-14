@@ -71,3 +71,35 @@ it('creates a budget and redirects with success message', function () {
     $response->assertSessionHas('success', 'Budget successfully created.');
 
 });
+
+it('does not allow unverified users to create budgets', function () {
+    $user = User::factory()->create([
+        'email_verified_at' => null,
+    ]);
+
+    $response = $this->actingAs($user)->post(route('budgets.store'), [
+        'name' => 'New Computer',
+        'amount' => 950,
+        'type' => 'general',
+    ]);
+
+    $response->assertRedirect(route('verification.notice'));
+});
+
+it('validates amount must be greater than zero', function () {
+    $user = User::factory()->create([
+        'email_verified_at' => now(),
+    ]);
+
+    $response = $this->actingAs($user)
+        ->from(route('budgets.create'))
+        ->post(route('budgets.store'), [
+            'name' => 'New Computer',
+            'amount' => 0,
+            'type' => 'general',
+        ]);
+
+    $response->assertRedirect(route('budgets.create'));
+    $response->assertSessionHasErrors(['amount']);
+
+});
