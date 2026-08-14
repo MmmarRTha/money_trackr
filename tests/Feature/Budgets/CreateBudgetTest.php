@@ -55,3 +55,19 @@ it('assigns the created budget to the authenticated user', function () {
     $budget = Budget::first();
     expect($budget->user_id)->toBe($user->id);
 });
+
+it('creates a budget and redirects with success message', function () {
+    $user = User::factory()->create([
+        'email_verified_at' => now(),
+    ]);
+
+    $response = $this->actingAs($user)->post(route('budgets.store'), [
+        'name' => 'New Computer',
+        'amount' => 950,
+        'type' => 'general',
+    ]);
+
+    $response->assertRedirect(route('budgets.index'));
+    $response->assertSessionHas('success', 'Budget successfully created.');
+
+});
