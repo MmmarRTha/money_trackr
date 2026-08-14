@@ -103,3 +103,35 @@ it('validates amount must be greater than zero', function () {
     $response->assertSessionHasErrors(['amount']);
 
 });
+
+it('validates type against allowed values ', function () {
+    $user = User::factory()->create([
+        'email_verified_at' => now(),
+    ]);
+
+    $response = $this->actingAs($user)
+        ->from(route('budgets.create'))
+        ->post(route('budgets.store'), [
+            'name' => 'New Computer',
+            'amount' => 950,
+            'type' => 'not valid',
+        ]);
+
+    $response->assertRedirect(route('budgets.create'));
+    $response->assertSessionHasErrors(['type']);
+});
+
+it('accepts a valid budget type', function () {
+    $user = User::factory()->create([
+        'email_verified_at' => now(),
+    ]);
+
+    $response = $this->actingAs($user)->post(route('budgets.store'), [
+        'name' => 'Office Setup',
+        'amount' => 950,
+        'type' => 'goal',
+    ]);
+
+    $response->assertSessionDoesntHaveErrors();
+    $this->assertDatabaseHas('budgets', ['type' => 'goal']);
+});
