@@ -9,6 +9,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Attributes\Controllers\Authorize;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class BudgetController extends Controller
 {
@@ -45,9 +47,9 @@ class BudgetController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Budget $budget): View
+    public function show(Budget $budget): Response
     {
-        //
+        return Inertia::render('budgets/Show');
     }
 
     /**
