@@ -78,6 +78,6 @@ class BudgetController extends Controller
     {
         $budget->delete();
 
-        return redirect()->route('budgets.index')->with('success', 'Budget deleted!');
+        return redirect()->route('budgets.index')->with('success', 'Budget successfully deleted!');
     }
 }
