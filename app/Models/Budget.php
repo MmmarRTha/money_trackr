@@ -3,7 +3,9 @@
 namespace App\Models;
 
 use App\BudgetType;
+use Database\Factories\BudgetFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -11,7 +13,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 #[Fillable(['name', 'amount', 'type', 'user_id'])]
 class Budget extends Model
 {
-    use SoftDeletes;
+    /** @use HasFactory<BudgetFactory> */
+    use HasFactory, SoftDeletes;
 
     protected $casts = [
         'user_id' => 'integer',
