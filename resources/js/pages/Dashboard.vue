@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import {Head} from '@inertiajs/vue3';
 import Heading from '@/components/Heading.vue';
-import { dashboard } from '@/routes';
 import {Button} from "@/components/ui/button";
-import {create} from "@/routes/budgets";
+import { dashboard } from '@/routes';
 
 defineOptions({
     layout: {
