@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import {Head} from '@inertiajs/vue3';
+import { Head } from '@inertiajs/vue3';
 import Heading from '@/components/Heading.vue';
+import { Button } from '@/components/ui/button';
 import { dashboard } from '@/routes';
-import {Button} from "@/components/ui/button";
-import {create} from "@/routes/budgets";
 
 defineOptions({
     layout: {
@@ -27,7 +26,11 @@ defineOptions({
             title="Manage your budgets"
             description="Create and manage your monthly budgets"
         />
-        <Button as-child size="lg" class="md:w-80 md:mx-auto bg-fuchsia-600 hover:bg-fuchsia-700 text-white text-lg font-medium">
+        <Button
+            as-child
+            size="lg"
+            class="bg-fuchsia-600 text-lg font-medium text-white hover:bg-fuchsia-700 md:mx-auto md:w-80"
+        >
             <a href="/budgets/create">New Budget</a>
         </Button>
     </div>

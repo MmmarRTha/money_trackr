@@ -22,7 +22,7 @@
     <div class="absolute right-0 z-50 mt-2 w-56 origin-top-right overflow-hidden rounded-xl border border-neutral-700 bg-neutral-900 p-1.5 shadow-2xl ring-1 shadow-black/30 ring-black/20">
         {{-- Show --}}
         <a
-            href=""
+            href="{{ route('budgets.show', $budget) }}"
             class="group/item flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-neutral-300 transition hover:bg-neutral-800 hover:text-white focus:bg-neutral-800 focus:outline-none"
         >
             <span class="flex size-8 shrink-0 items-center justify-center rounded-lg bg-neutral-800 text-neutral-400 transition group-hover/item:bg-neutral-700 group-hover/item:text-fuchsia-400">
