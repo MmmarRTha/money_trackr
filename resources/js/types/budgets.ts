@@ -1,9 +1,9 @@
-type BudgetType = 'general' | 'goal'
+type BudgetType = 'general' | 'goal';
 
 export type Budget = {
-    id: number
-    name: string
-    amount: string
-    type: BudgetType
-    created_at: string
-}
+    id: number;
+    name: string;
+    amount: string;
+    type: BudgetType;
+    created_at: string;
+};
