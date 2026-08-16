@@ -34,7 +34,9 @@
                     >
                         {{ $budget->isGoal() ? 'Project' : 'General' }}
                     </p>
-                    <p class="text-xl font-semibold text-neutral-100">{{ $budget->name }}</p>
+                    <a href="{{ route('budgets.show', $budget) }}">
+                        <p class="text-xl font-semibold text-neutral-100">{{ $budget->name }}</p>
+                    </a>
                 </div>
 
                 <div class="flex justify-end">

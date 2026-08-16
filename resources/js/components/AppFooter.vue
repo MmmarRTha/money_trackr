@@ -18,9 +18,9 @@ const currentYear = new Date().getFullYear();
 </script>
 
 <template>
-    <footer class="border-t bg-background py-8 px-6">
+    <footer class="border-t bg-background px-6 py-8">
         <div
-            class="mx-auto flex w-full max-w-6xl flex-col items-center gap-2 text-center text-sm md:text-base sm:flex-row sm:justify-between sm:text-left"
+            class="mx-auto flex w-full max-w-6xl flex-col items-center gap-2 text-center text-sm sm:flex-row sm:justify-between sm:text-left md:text-base"
         >
             <p>{{ selectedPhrase }}.</p>
             <p>© {{ currentYear }} Martha M. Nieto. All rights reserved.</p>

@@ -115,21 +115,15 @@ const bars = [40, 55, 35, 70, 50, 85, 60, 45, 75, 55, 90, 65];
                         class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground"
                     >
                         <li class="flex items-center gap-1.5">
-                            <CircleCheck
-                                class="h-4 w-4 text-fuchsia-600"
-                            />
+                            <CircleCheck class="h-4 w-4 text-fuchsia-600" />
                             Free to start
                         </li>
                         <li class="flex items-center gap-1.5">
-                            <CircleCheck
-                                class="h-4 w-4 text-fuchsia-600"
-                            />
+                            <CircleCheck class="h-4 w-4 text-fuchsia-600" />
                             No credit card
                         </li>
                         <li class="flex items-center gap-1.5">
-                            <CircleCheck
-                                class="h-4 w-4 text-fuchsia-600"
-                            />
+                            <CircleCheck class="h-4 w-4 text-fuchsia-600" />
                             Your data stays yours
                         </li>
                     </ul>
@@ -223,9 +217,7 @@ const bars = [40, 55, 35, 70, 50, 85, 60, 45, 75, 55, 90, 65];
                     >
                         <component :is="feature.icon" class="h-5 w-5" />
                     </span>
-                    <h3
-                        class="mt-4 text-base font-semibold text-foreground"
-                    >
+                    <h3 class="mt-4 text-base font-semibold text-foreground">
                         {{ feature.title }}
                     </h3>
                     <p
