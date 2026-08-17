@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import ExpenseForm from '@/components/ExpenseForm.vue';
 import type { Budget } from '@/types/budgets';
+import type { Category } from '@/types/category';
 
 defineProps<{
     open: boolean;
     budget: Budget;
+    categories: Category[];
 }>();
 
 const emit = defineEmits<{
@@ -17,8 +19,8 @@ const closeModal = () => {
 </script>
 
 <template>
-    <Teleport to="body">
-        <div v-if="open" class="fixed inset-0 z-50">
+    <Teleport v-if="open" to="body">
+        <div class="fixed inset-0 z-50">
             <div class="fixed inset-0 bg-black/80" @click="closeModal"></div>
             <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
                 <div
@@ -40,7 +42,11 @@ const closeModal = () => {
                         >
                             New Expense
                         </h3>
-                        <ExpenseForm :budget="budget" @close="closeModal" />
+                        <ExpenseForm
+                            :budget="budget"
+                            :categories="categories"
+                            @close="closeModal"
+                        />
                     </div>
                 </div>
             </div>

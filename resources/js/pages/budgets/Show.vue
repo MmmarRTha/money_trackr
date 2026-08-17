@@ -4,8 +4,12 @@ import { ref } from 'vue';
 import AmountDisplay from '@/components/AmountDisplay.vue';
 import ExpenseModal from '@/components/ExpenseModal.vue';
 import type { Budget } from '@/types/budgets';
+import type { Category } from '@/types/category';
 
-defineProps<{ budget: Budget }>();
+defineProps<{
+    budget: Budget;
+    categories: Category[];
+}>();
 
 const isExpenseModalOpen = ref(false);
 
@@ -80,6 +84,7 @@ const closeExpenseModal = () => {
     <ExpenseModal
         :open="isExpenseModalOpen"
         :budget="budget"
+        :categories="categories"
         @close="closeExpenseModal"
     />
 </template>

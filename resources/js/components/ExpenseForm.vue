@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import {
+    Select,
     SelectContent,
     SelectItem,
     SelectTrigger,
@@ -12,10 +13,11 @@ import {
 } from '@/components/ui/select';
 import { Spinner } from '@/components/ui/spinner';
 import type { Budget } from '@/types/budgets';
-import { Category } from '@/utils/category';
+import type { Category } from '@/types/category';
 
-const props = defineProps<{
+defineProps<{
     budget: Budget;
+    categories: Category[];
 }>();
 
 const emit = defineEmits<{
@@ -70,27 +72,26 @@ const submit = () => {
             <InputError :message="form.errors.amount" />
         </div>
 
-        <!--        <div v-if="budget.type === 'general'" class="grid gap-2">-->
-        <!--            <Label for="category">Category</Label>-->
-        <!--            <Select v-model="form.category">-->
-        <!--                <SelectTrigger class="w-full">-->
-        <!--                    <SelectValue placeholder="Select a category" />-->
-        <!--                </SelectTrigger>-->
-        <!--                <SelectContent>-->
-        <!--                    <SelectItem-->
-        <!--                        v-for="cat in Category"-->
-        <!--                        :key="cat.value"-->
-        <!--                        :value="cat.value"-->
-        <!--                    >-->
-        <!--                        {{ cat.label }}-->
-        <!--                    </SelectItem>-->
-        <!--                </SelectContent>-->
-        <!--            </Select>-->
-        <!--            <InputError :message="form.errors.category" />-->
-        <!--        </div>-->
+        <div v-if="budget.type === 'general'" class="grid gap-3">
+            <Label class="text-xl" for="category">Category:</Label>
+            <Select v-model="form.category">
+                <SelectTrigger class="w-full">
+                    <SelectValue placeholder="Select a category" />
+                </SelectTrigger>
+                <SelectContent>
+                    <SelectItem
+                        v-for="cat in categories"
+                        :key="cat.value"
+                        :value="cat.value"
+                    >
+                        {{ cat.label }}
+                    </SelectItem>
+                </SelectContent>
+            </Select>
+            <InputError :message="form.errors.category" />
+        </div>
 
         <Button
-            as-child
             type="submit"
             class="rounded-lg border border-b-fuchsia-400 bg-fuchsia-600 text-xl font-bold text-white"
             :disabled="form.processing"

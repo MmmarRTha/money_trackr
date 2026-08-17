@@ -8,6 +8,9 @@
     "guidelines": true,
     "mcp": true,
     "nightwatch": false,
+    "packages": [
+        "spatie/guidelines-skills"
+    ],
     "sail": false,
     "skills": [
         "infer-conventions",
@@ -16,6 +19,10 @@
         "wayfinder-development",
         "pest-testing",
         "inertia-vue-development",
-        "tailwindcss-development"
+        "tailwindcss-development",
+        "spatie-javascript",
+        "spatie-laravel-php",
+        "spatie-security",
+        "spatie-version-control"
     ]
 }
