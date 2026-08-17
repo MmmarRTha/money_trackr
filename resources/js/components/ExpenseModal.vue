@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Budget } from '@/types/budgets';
+import ExpenseForm from '@/components/ExpenseForm.vue';
 
 defineProps<{
     open: boolean;
@@ -39,7 +40,7 @@ const closeModal = () => {
                         >
                             New Expense
                         </h3>
-                        <!-- Form here -->
+                        <ExpenseForm :budget="budget" @close="closeModal" />
                     </div>
                 </div>
             </div>
