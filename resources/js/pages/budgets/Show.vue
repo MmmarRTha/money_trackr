@@ -6,10 +6,13 @@ import ExpenseModal from '@/components/ExpenseModal.vue';
 import type { Budget } from '@/types/budgets';
 
 defineProps<{ budget: Budget }>();
+
 const isExpenseModalOpen = ref(false);
+
 const openCreateModal = () => {
     isExpenseModalOpen.value = true;
 };
+
 const closeExpenseModal = () => {
     isExpenseModalOpen.value = false;
 };

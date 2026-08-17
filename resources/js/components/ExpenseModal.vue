@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Budget } from '@/types/budgets';
 import ExpenseForm from '@/components/ExpenseForm.vue';
+import type { Budget } from '@/types/budgets';
 
 defineProps<{
     open: boolean;

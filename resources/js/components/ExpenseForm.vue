@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import { useForm } from '@inertiajs/vue3';
-import { Budget } from '@/types/budgets';
-import { Label } from '@/components/ui/label';
-import { Input } from '@/components/ui/input';
 import InputError from '@/components/InputError.vue';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import {
     SelectContent,
     SelectItem,
     SelectTrigger,
     SelectValue,
 } from '@/components/ui/select';
-import { Category } from '@/utils/category';
-import { Button } from '@/components/ui/button';
 import { Spinner } from '@/components/ui/spinner';
+import type { Budget } from '@/types/budgets';
+import { Category } from '@/utils/category';
 
 const props = defineProps<{
     budget: Budget;
@@ -39,8 +39,8 @@ const submit = () => {
 </script>
 
 <template>
-    <form @submit.prevent="submit" class="flex flex-col gap-6">
-        <div class="grid gap-2">
+    <form @submit.prevent="submit" class="flex flex-col gap-8 p-8">
+        <div class="grid gap-3">
             <Label class="text-xl font-bold" for="name">Expense Name:</Label>
             <Input
                 id="name"
@@ -53,7 +53,7 @@ const submit = () => {
             <InputError :message="form.errors.name" />
         </div>
 
-        <div class="grid gap-2">
+        <div class="grid gap-3">
             <Label class="text-xl font-bold" for="amount"
                 >Expense Amount:</Label
             >
@@ -90,8 +90,9 @@ const submit = () => {
         <!--        </div>-->
 
         <Button
+            as-child
             type="submit"
-            class="mt-2 w-full text-xl"
+            class="rounded-lg border border-b-fuchsia-400 bg-fuchsia-600 text-xl font-bold text-white"
             :disabled="form.processing"
         >
             <Spinner v-if="form.processing" />
