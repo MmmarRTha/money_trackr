@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ExpenseCategory;
 use App\Http\Requests\BudgetRequest;
 use App\Models\Budget;
 use App\Models\User;
@@ -21,7 +22,7 @@ class BudgetController extends Controller
     {
         /** @var User $user */
         $user = Auth::user();
-        $budgets = $user->budgets()->get();
+        $budgets = $user->budgets()->latest('updated_at')->get();
 
         return view('budgets.index', ['budgets' => $budgets]);
     }
@@ -50,7 +51,13 @@ class BudgetController extends Controller
     #[Authorize('view', 'budget')]
     public function show(Budget $budget): Response
     {
-        return Inertia::render('budgets/Show', ['budget' => $budget]);
+        return Inertia::render('budgets/Show', [
+            'budget' => $budget,
+            'categories' => collect(ExpenseCategory::cases())->map(fn ($category) => [
+                'value' => $category->value,
+                'label' => $category->label(),
+            ]),
+        ]);
     }
 
     /**
