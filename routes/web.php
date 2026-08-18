@@ -10,7 +10,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::inertia('dashboard', 'Dashboard')->name('dashboard');
 
     Route::resource('budgets', BudgetController::class);
-    Route::resource('expenses', ExpenseController::class);
+    Route::post('/budgets/{budget}/expenses', [ExpenseController::class, 'store'])->name('expenses.store');
 });
 
 require __DIR__.'/settings.php';

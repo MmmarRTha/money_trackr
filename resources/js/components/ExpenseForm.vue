@@ -15,7 +15,7 @@ import { Spinner } from '@/components/ui/spinner';
 import type { Budget } from '@/types/budgets';
 import type { Category } from '@/types/category';
 
-defineProps<{
+const props = defineProps<{
     budget: Budget;
     categories: Category[];
 }>();
@@ -31,7 +31,7 @@ const form = useForm({
 });
 
 const submit = () => {
-    form.post(`/expenses`, {
+    form.post(`/budgets/${props.budget.id}/expenses`, {
         onSuccess: () => {
             form.reset();
             emit('close');
