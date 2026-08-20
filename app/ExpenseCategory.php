@@ -36,17 +36,18 @@ enum ExpenseCategory: string
     public function color(): string
     {
         return match ($this) {
-            self::Food => 'bg-orange-500 text-orange-100',
-            self::Transportation => 'bg-blue-500 text-blue-100',
-            self::Health => 'bg-red-500 text-red-100',
-            self::Entertainment => 'bg-purple-500 text-purple-100',
-            self::Subscriptions => 'bg-indigo-500 text-indigo-100',
-            self::Beauty => 'bg-pink-500 text-pink-100',
-            self::Clothing => 'bg-yellow-500 text-yellow-100',
-            self::Home => 'bg-teal-500 text-teal-100',
-            self::Education => 'bg-cyan-500 text-cyan-100',
-            self::Pets => 'bg-amber-500 text-amber-100',
-            self::Other => 'bg-gray-500 text-gray-100',
+            self::Food => 'bg-emerald-500/15 text-emerald-300 ring-emerald-500/30',
+            self::Transportation => 'bg-sky-500/15 text-sky-300 ring-sky-500/30',
+            self::Health => 'bg-rose-500/15 text-rose-300 ring-rose-500/30',
+            self::Entertainment => 'bg-violet-500/15 text-violet-300 ring-violet-500/30',
+            self::Subscriptions => 'bg-blue-500/15 text-blue-300 ring-blue-500/30',
+            self::Beauty => 'bg-pink-500/15 text-pink-300 ring-pink-500/30',
+            self::Clothing => 'bg-amber-500/15 text-amber-300 ring-amber-500/30',
+            self::Home => 'bg-teal-500/15 text-teal-300 ring-teal-500/30',
+            self::Education => 'bg-cyan-500/15 text-cyan-300 ring-cyan-500/30',
+            self::Pets => 'bg-orange-500/15 text-orange-300 ring-orange-500/30',
+            self::Other => 'bg-mist-500/15 text-mist-300 ring-mist-500/30',
         };
+
     }
 }

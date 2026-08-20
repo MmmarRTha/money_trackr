@@ -5,6 +5,7 @@ import AmountDisplay from '@/components/AmountDisplay.vue';
 import ExpenseModal from '@/components/ExpenseModal.vue';
 import type { Budget } from '@/types/budgets';
 import type { Category } from '@/types/category';
+import { formatCurrency, formatDate } from '@/utils';
 
 defineProps<{
     budget: Budget;
@@ -62,24 +63,50 @@ const closeExpenseModal = () => {
                 New Expense
             </button>
         </div>
-        <!--        <div v-if="props.budget.expenses.length" class="mt-8">-->
-        <!--            &lt;!&ndash; Expenses table will go here &ndash;&gt;-->
-        <!--        </div>-->
+        <div v-if="budget.expenses.length" class="mt-8 space-y-3">
+            <div
+                v-for="expense in budget.expenses"
+                :key="expense.id"
+                :class="[
+                    'flex items-center justify-between rounded-lg border border-neutral-700 bg-neutral-900 transition hover:border-neutral-600',
+                    budget.type === 'general' ? 'p-3' : 'p-4',
+                ]"
+            >
+                <div class="flex flex-col gap-2">
+                    <span
+                        v-if="budget.type === 'general'"
+                        class="mb-2 inline-block rounded-full px-3 py-1 text-xs font-light ring-1 ring-inset"
+                        :class="expense.category_color"
+                    >
+                        {{ expense.category_label }}
+                    </span>
+                    <p class="text-xl font-semibold text-neutral-100">
+                        {{ expense.name }}
+                    </p>
+                </div>
 
-        <!--        <p-->
-        <!--            v-else-->
-        <!--            class="mt-10 text-center text-xl text-gray-300"-->
-        <!--        >-->
-        <!--            No Expenses.-->
+                <div class="flex items-center gap-6">
+                    <span class="text-sm text-gray-400">
+                        {{ formatDate(expense.created_at) }}
+                    </span>
+                    <div class="text-2xl font-bold text-fuchsia-500">
+                        {{ formatCurrency(Number(expense.amount)) }}
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <!--            <button-->
-        <!--                type="button"-->
-        <!--                @click="openCreateModal"-->
-        <!--                class="text-fuchsia-400 hover:text-fuchsia-300"-->
-        <!--            >-->
-        <!--                Start by creating one-->
-        <!--            </button>-->
-        <!--        </p>-->
+        <p v-else class="mt-10 text-center text-xl text-gray-300">
+            No Expenses.
+
+            <button
+                type="button"
+                @click="openCreateModal"
+                class="text-fuchsia-400 hover:text-fuchsia-300"
+            >
+                Start by creating one
+            </button>
+        </p>
     </section>
     <ExpenseModal
         :open="isExpenseModalOpen"

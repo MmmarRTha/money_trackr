@@ -51,6 +51,10 @@ class BudgetController extends Controller
     #[Authorize('view', 'budget')]
     public function show(Budget $budget): Response
     {
+        $budget->load([
+            'expenses' => fn ($query) => $query->latest(),
+        ]);
+
         return Inertia::render('budgets/Show', [
             'budget' => $budget,
             'categories' => collect(ExpenseCategory::cases())->map(fn ($category) => [
