@@ -1,4 +1,4 @@
-import {Expense} from "@/types/expense";
+import type { Expense } from '@/types/expense';
 
 type BudgetType = 'general' | 'goal';
 
@@ -8,5 +8,5 @@ export type Budget = {
     amount: string;
     type: BudgetType;
     created_at: string;
-    expenses: Expense[]
+    expenses: Expense[];
 };
