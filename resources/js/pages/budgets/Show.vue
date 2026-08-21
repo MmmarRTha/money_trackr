@@ -10,6 +10,7 @@ import { formatCurrency, formatDate } from '@/utils';
 defineProps<{
     budget: Budget;
     categories: Category[];
+    spent: string;
 }>();
 
 const isExpenseModalOpen = ref(false);
@@ -45,7 +46,7 @@ const closeExpenseModal = () => {
     <main class="mt-10 grid grid-cols-1 items-center gap-20 md:grid-cols-2">
         <div class="space-y-5">
             <AmountDisplay label="Budget" :amount="Number(budget.amount)" />
-            <AmountDisplay label="Spent" :amount="0" />
+            <AmountDisplay label="Spent" :amount="Number(spent)" />
             <AmountDisplay label="Remaining" :amount="0" />
         </div>
     </main>
