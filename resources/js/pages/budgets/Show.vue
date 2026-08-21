@@ -1,18 +1,28 @@
 <script setup lang="ts">
 import { Head } from '@inertiajs/vue3';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import AmountDisplay from '@/components/AmountDisplay.vue';
+import CircularProgressBar from '@/components/CircularProgressBar.vue';
 import ExpenseModal from '@/components/ExpenseModal.vue';
 import type { Budget } from '@/types/budgets';
 import type { Category } from '@/types/category';
 import { formatCurrency, formatDate } from '@/utils';
 
-defineProps<{
+const { budget, categories, spent } = defineProps<{
     budget: Budget;
     categories: Category[];
+    spent: string;
 }>();
 
 const isExpenseModalOpen = ref(false);
+
+const percentageUsed = computed(() =>
+    Number(budget.amount) > 0
+        ? (Number(spent) / Number(budget.amount)) * 100
+        : 0,
+);
+
+const remaining = computed(() => Number(budget.amount) - Number(spent));
 
 const openCreateModal = () => {
     isExpenseModalOpen.value = true;
@@ -43,10 +53,11 @@ const closeExpenseModal = () => {
     </section>
 
     <main class="mt-10 grid grid-cols-1 items-center gap-20 md:grid-cols-2">
+        <CircularProgressBar :percentageUsed="percentageUsed" />
         <div class="space-y-5">
             <AmountDisplay label="Budget" :amount="Number(budget.amount)" />
-            <AmountDisplay label="Spent" :amount="0" />
-            <AmountDisplay label="Remaining" :amount="0" />
+            <AmountDisplay label="Spent" :amount="Number(spent)" />
+            <AmountDisplay label="Remaining" :amount="remaining" />
         </div>
     </main>
 
