@@ -16,6 +16,7 @@ export type Expense = {
     name: string;
     amount: string;
     created_at: string;
+    updated_at: string;
     category: CategoryValue;
     category_label: string;
     category_color: string;

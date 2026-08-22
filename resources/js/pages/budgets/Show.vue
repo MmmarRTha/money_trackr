@@ -3,9 +3,11 @@ import { Head } from '@inertiajs/vue3';
 import { computed, ref } from 'vue';
 import AmountDisplay from '@/components/AmountDisplay.vue';
 import CircularProgressBar from '@/components/CircularProgressBar.vue';
+import ExpenseDropdown from '@/components/ExpenseDropdown.vue';
 import ExpenseModal from '@/components/ExpenseModal.vue';
 import type { Budget } from '@/types/budgets';
 import type { Category } from '@/types/category';
+import type { Expense } from '@/types/expense';
 import { formatCurrency, formatDate } from '@/utils';
 
 const { budget, categories, spent } = defineProps<{
@@ -15,7 +17,7 @@ const { budget, categories, spent } = defineProps<{
 }>();
 
 const isExpenseModalOpen = ref(false);
-
+const selectedExpense = ref<Expense | null>(null);
 const percentageUsed = computed(() =>
     Number(budget.amount) > 0
         ? (Number(spent) / Number(budget.amount)) * 100
@@ -25,10 +27,16 @@ const percentageUsed = computed(() =>
 const remaining = computed(() => Number(budget.amount) - Number(spent));
 
 const openCreateModal = () => {
+    selectedExpense.value = null;
     isExpenseModalOpen.value = true;
 };
 
+const openEditModal = (expense: Expense) => {
+    selectedExpense.value = expense;
+    isExpenseModalOpen.value = true;
+};
 const closeExpenseModal = () => {
+    selectedExpense.value = null;
     isExpenseModalOpen.value = false;
 };
 </script>
@@ -80,13 +88,13 @@ const closeExpenseModal = () => {
                 :key="expense.id"
                 :class="[
                     'flex items-center justify-between rounded-lg border border-neutral-700 bg-neutral-900 transition hover:border-neutral-600',
-                    budget.type === 'general' ? 'p-3' : 'p-4',
+                    budget.type === 'general' ? 'px-6 py-3' : 'p-4',
                 ]"
             >
-                <div class="flex flex-col gap-2">
+                <div class="flex flex-col items-start gap-2">
                     <span
                         v-if="budget.type === 'general'"
-                        class="mb-2 inline-block rounded-full px-3 py-1 text-xs font-light ring-1 ring-inset"
+                        class="inline-block rounded-full px-3 py-1 text-xs font-light ring-1 ring-inset"
                         :class="expense.category_color"
                     >
                         {{ expense.category_label }}
@@ -96,15 +104,21 @@ const closeExpenseModal = () => {
                     </p>
                 </div>
 
-                <div class="flex items-center gap-6">
-                    <span class="text-sm text-gray-400">
-                        {{ formatDate(expense.created_at) }}
+                <div class="flex shrink-0 items-center gap-6">
+                    <span
+                        class="text-sm text-gray-400"
+                        title="Last time this expense was modified"
+                    >
+                        Updated {{ formatDate(expense.updated_at) }}
                     </span>
                     <div class="text-2xl font-bold text-fuchsia-500">
                         {{ formatCurrency(Number(expense.amount)) }}
                     </div>
+                    <ExpenseDropdown
+                        :expense="expense"
+                        @edit="openEditModal(expense)"
+                    />
                 </div>
-                Hi Expense Dropdown
             </div>
         </div>
 
@@ -124,6 +138,7 @@ const closeExpenseModal = () => {
         :open="isExpenseModalOpen"
         :budget="budget"
         :categories="categories"
+        :expense="selectedExpense"
         @close="closeExpenseModal"
     />
 </template>

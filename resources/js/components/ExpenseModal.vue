@@ -2,11 +2,13 @@
 import ExpenseForm from '@/components/ExpenseForm.vue';
 import type { Budget } from '@/types/budgets';
 import type { Category } from '@/types/category';
+import type { Expense } from '@/types/expense';
 
 defineProps<{
     open: boolean;
     budget: Budget;
     categories: Category[];
+    expense?: Expense | null;
 }>();
 
 const emit = defineEmits<{
@@ -40,6 +42,7 @@ const closeModal = () => {
                         <ExpenseForm
                             :budget="budget"
                             :categories="categories"
+                            :expense="expense"
                             @close="closeModal"
                         />
                     </div>

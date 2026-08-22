@@ -24,7 +24,7 @@ class ExpenseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(ExpenseRequest $request, Budget $budget, Expense $expense): Response
+    public function update(ExpenseRequest $request, Budget $budget, Expense $expense): RedirectResponse
     {
         $expense->update($request->validated());
 

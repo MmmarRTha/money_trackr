@@ -52,7 +52,7 @@ class BudgetController extends Controller
     public function show(Budget $budget): Response
     {
         $budget->load([
-            'expenses' => fn ($query) => $query->latest(),
+            'expenses' => fn ($query) => $query->latest('updated_at'),
         ]);
 
         $spent = $budget->expenses->sum('amount');

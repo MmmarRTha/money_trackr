@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useForm } from '@inertiajs/vue3';
+import { computed } from 'vue';
 import InputError from '@/components/InputError.vue';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -14,35 +15,57 @@ import {
 import { Spinner } from '@/components/ui/spinner';
 import type { Budget } from '@/types/budgets';
 import type { Category } from '@/types/category';
+import type { Expense } from '@/types/expense';
 
 const props = defineProps<{
     budget: Budget;
     categories: Category[];
+    expense?: Expense | null;
 }>();
 
 const emit = defineEmits<{
     close: [];
 }>();
 
+const isUpdate = computed(() => Boolean(props.expense));
+
 const form = useForm({
-    name: '',
-    amount: '',
-    category: '',
+    name: props.expense?.name ?? '',
+    amount: props.expense?.amount ?? '',
+    category: props.expense?.category ?? '',
 });
 
+const heading = computed(() =>
+    isUpdate.value ? 'Update Expense' : 'New Expense',
+);
+
+const submitLabel = computed(() =>
+    form.processing
+        ? 'Saving...'
+        : isUpdate.value
+          ? 'Save Changes'
+          : 'Add Expense',
+);
+
 const submit = () => {
-    form.post(`/budgets/${props.budget.id}/expenses`, {
-        onSuccess: () => {
-            form.reset();
-            emit('close');
-        },
-    });
+    const onSuccess = () => {
+        form.reset();
+        emit('close');
+    };
+
+    if (isUpdate.value && props.expense) {
+        form.put(`/budgets/${props.budget.id}/expenses/${props.expense.id}`, {
+            onSuccess,
+        });
+    } else {
+        form.post(`/budgets/${props.budget.id}/expenses`, { onSuccess });
+    }
 };
 </script>
 
 <template>
     <h3 class="mt-10 text-center text-4xl font-black text-fuchsia-400">
-        New Expense
+        {{ heading }}
     </h3>
     <form @submit.prevent="submit" class="flex flex-col gap-8 p-8">
         <div class="grid gap-3">
@@ -100,7 +123,7 @@ const submit = () => {
             :disabled="form.processing"
         >
             <Spinner v-if="form.processing" />
-            {{ form.processing ? 'Saving...' : 'Add Expense' }}
+            {{ submitLabel }}
         </Button>
     </form>
 </template>

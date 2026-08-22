@@ -17,7 +17,7 @@ const props = withDefaults(defineProps<Props>(), {
     strokeWidth: 10,
 });
 
-const ANIMATION_DURATION_MS = 600;
+const ANIMATION_DURATION_MS = 300;
 
 const radius = computed(() => (props.size - props.strokeWidth) / 2);
 
