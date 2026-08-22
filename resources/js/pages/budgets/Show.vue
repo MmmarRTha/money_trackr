@@ -104,6 +104,7 @@ const closeExpenseModal = () => {
                         {{ formatCurrency(Number(expense.amount)) }}
                     </div>
                 </div>
+                Hi Expense Dropdown
             </div>
         </div>
 

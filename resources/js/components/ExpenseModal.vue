@@ -37,11 +37,6 @@ const closeModal = () => {
                         >
                             &times;
                         </button>
-                        <h3
-                            class="mt-10 text-center text-4xl font-black text-fuchsia-400"
-                        >
-                            New Expense
-                        </h3>
                         <ExpenseForm
                             :budget="budget"
                             :categories="categories"

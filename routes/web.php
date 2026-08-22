@@ -11,6 +11,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::resource('budgets', BudgetController::class);
     Route::post('/budgets/{budget}/expenses', [ExpenseController::class, 'store'])->name('expenses.store');
+    Route::put('/budgets/{budget}/expenses/{expense}', [ExpenseController::class, 'update'])->name('expenses.update');
 });
 
 require __DIR__.'/settings.php';
